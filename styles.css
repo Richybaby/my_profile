@@ -6,33 +6,6 @@ body {
 	font-family: 'Indie Flower', cursive;
 }
 
-
-a {
-	text-decoration: none;
-}
-
-ul {
-	list-style-type: none;
-	margin: 0;	  
-	padding: 0;
-	overflow: hidden;
-}
-li {
-	display: inline;
-}
-
-
-.icon {
-	color: grey;
-	font-size:40px;
-}
-.icon:hover {
-	color: black;
-	opacity: 0.8;
-	transition: color ease 0.5s;
-	/*font-size: 50px;
-	https://fonts.google.com/specimen/Roboto?selection.family=Roboto
-}
 */
 
 @media (max-width: 720px) {
@@ -63,6 +36,11 @@ li {
   }
 }
 
+.display-block {
+	display: block;
+
+}
+
 .card-white {
 	margin-top: 30px;
 	background: rgba(255,255,255,0.5);
@@ -72,6 +50,17 @@ li {
 	padding-left: 20px; 
 	border-radius: 4px;
 	box-shadow: 3px 3px 5px rgba(0,0,0,.1);
+}
+.icon {
+	color: #0169D9;
+	font-size:40px;
+}
+.icon:hover {
+	color: black;
+	opacity: 0.8;
+	transition: color ease 0.5s;
+	/*font-size: 50px;
+	https://fonts.google.com/specimen/Roboto?selection.family=Roboto
 }
 
 

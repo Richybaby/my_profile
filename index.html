@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  
   <head>
  	<title>I'm a dreamer!</title>
 	<meta name="Amira seeking inspiration" content="Sometimes I dream, but dreaming is only part way there...">
@@ -17,22 +18,34 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="stylesheet" href="styles.css">
   </head>
+
   <body>
-  	<div class="container">
+  	<div class="container text-center">
 	  	<div class="card-white">
 	  		<h1>I'm a dreamer!</h1>
 	  		<img src="images/dreamer.jpg" alt="Dreamer" class="img-resize rounded-circle">
-	  			<a href=https://www.linkedin.com/in/amirabelhajsoulami/ target="_blank"> 
+	  			<a href=https://www.linkedin.com/in/amirabelhajsoulami/ target="_blank" class="display-block"> 
 	  				<div class="btn btn-primary">
 	  				 	La Dreameuse!
 	  				</div>
-	  		</a>
-	  			<p class="visible-mobile">Let me tell you... nothing @ all</p>
+	  			</a>
+	  			
+	  			<p class="d-block d-sm-none">Let me tell you... nothing @ all</p>
 	  			<p class="visible-large-screen">Let me tell you a little bit about myself before you click on that link above... unless, of course, you already have, you clicker-happy muppet!</p>
 	  			<p class="visible-large-screen">...actually, I've changed my mind. I have absolutely no intention of sharing anything interesting (or potentially compromising about myself) here!</p>
+		
+			<div class="dropdown">
+  				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"aria-expanded="false"> Click me ...NOW!
+  				</button>
+			 	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" href="#">What</a>
+				    <a class="dropdown-item" href="#">are you</a>
+				    <a class="dropdown-item" href="#">looking for?</a>
+				</div>
+			</div>
 		</div>
 	  	<div class="card-white">
-	  		<img src="images/dr-evil.jpg" alt="Austin Powers" class="img-resize" >
+	  		<img src="images/dr-evil.jpg" alt="Austin Powers" class="img-resize rounded-circle" >
 			<h1>Me on the other hand...</h1>
 	  			<a href=https://www.linkedin.com/in/pmderouininnovationstrategy/ target="_blank">
 	  				<div class="btn btn-primary">
@@ -41,22 +54,47 @@
 	  			</a>
 	  		<p>Don't get me started...</p>
 	  		<p>Me, it's all about the money!</p>
+	  		<!-- Button trigger modal -->
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  			Don't click here... I mean it!
+			</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Warning! Virus detected...</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        Do not click on "Close" or "Save changes" what ever you do...
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Save changes</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 	  	</div>
 	  	<div class="card-white">
 	  		<h2>Feeling sociable?</h2>
 				<ul class="list-inline">
-	  				<li>
+	  				<li class="list-inline-item">
 	  				<a href=https://www.facebook.com/richard.croft.969/ target="_blank">
 	  					<i class="fab fa-facebook-square icon"> 
 	  					</i>
 	  				</a>
 	  				</li>
-		  			<li>
+		  			<li class="list-inline-item">
 		  				<a href=https://atelier.bnpparibas/ target="_blank">
 			  				<i class="fas fa-poop icon"></i>
 			  			</a>
 		  			</li>
-		  			<li>
+		  			<li class="list-inline-item">
 						<a href=https://www.linkedin.com/in/richardcroft/ target="_blank">	
 		  					<i class="fab fa-linkedin-in icon"></i>
 		  					</i>
