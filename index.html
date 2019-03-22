@@ -104,7 +104,7 @@
 			</ul>
 	  	</div>
 		<div class="card-white">
-			<div class="typeform-widget" data-url="https://atelierbnpp.typeform.com/to/VW3Hv5" style="width: 100%; height: 500px;"></div>
+			<div class="typeform-widget" data-url="https://atelierbnpp.typeform.com/to/VW3Hv5?latitude=xxxxx&longitude=xxxxx" style="width: 100%; height: 500px;"></div>
 		</div>
 	</div>
 	</div>
@@ -114,58 +114,69 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
 		<script>
-		mapboxgl.accessToken = 'pk.eyJ1IjoicmljaHliYWJ5IiwiYSI6ImNqdGp1ajJ0MjFsOG40M3JyaHRzMzZjM2kifQ.O6Ov2Y6Y-IqLM8SEZ0A2FA';
-		var map = new mapboxgl.Map({
-		container: 'map',
-		style: 'mapbox://styles/mapbox/streets-v11',
-		zoom: 16,
-		pitch: 45,
-		bearing: -17.6,
-		center: [2.194219999999973, 48.8162]
-		});
-		// The 'building' layer in the mapbox-streets vector source contains building-height
-		// data from OpenStreetMap.
-		map.on('load', function() {
-		// Insert the layer beneath any symbol layer.
-		var layers = map.getStyle().layers;
-		 
-		var labelLayerId;
-		for (var i = 0; i < layers.length; i++) {
-		if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
-		labelLayerId = layers[i].id;
-		break;
-		}
-		}
-		 
-		map.addLayer({
-		'id': '3d-buildings',
-		'source': 'composite',
-		'source-layer': 'building',
-		'filter': ['==', 'extrude', 'true'],
-		'type': 'fill-extrusion',
-		'minzoom': 15,
-		'paint': {
-		'fill-extrusion-color': '#aaa',
-		 
-		// use an 'interpolate' expression to add a smooth transition effect to the
-		// buildings as the user zooms in
-		'fill-extrusion-height': [
-		"interpolate", ["linear"], ["zoom"],
-		15, 0,
-		15.05, ["get", "height"]
-		],
-		'fill-extrusion-base': [
-		"interpolate", ["linear"], ["zoom"],
-		15, 0,
-		15.05, ["get", "min_height"]
-		],
-		'fill-extrusion-opacity': .6
-		}
-		}, labelLayerId);
-		});
-		</script>
-
-		<script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script>
-
+	      	navigator.geolocation.getCurrentPosition((position) => {
+	      		var widget = $('.typeform-widget');
+  		        var url = widget.attr('data-url');
+  		        var regexLat = /latitude=xxxxx/;
+  		        var regexLng = /longitude=xxxxx/;
+  		        url = url.replace(regexLat, 'latitude=' + position.coords.latitude);
+  		        url = url.replace(regexLng, 'longitude=' + position.coords.longitude);
+  		        widget.attr('data-url', url);
+  		        (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })()
+	        mapboxgl.accessToken = 'pk.eyJ1IjoicmljaHliYWJ5IiwiYSI6ImNqdGp1ajJ0MjFsOG40M3JyaHRzMzZjM2kifQ.O6Ov2Y6Y-IqLM8SEZ0A2FA';
+    		var map = new mapboxgl.Map({
+	    		container: 'map',
+	    		style: 'mapbox://styles/mapbox/streets-v11',
+	    		zoom: 16,
+	    		pitch: 45,
+	    		bearing: -17.6,
+	    		center: [position.coords.longitude, position.coords.latitude]
+    		});
+    		// The 'building' layer in the mapbox-streets vector source contains building-height
+    		// data from OpenStreetMap.
+    		map.on('load', function() {
+    		// Insert the layer beneath any symbol layer.
+    		var layers = map.getStyle().layers;
+    		 
+    		var labelLayerId;
+    		for (var i = 0; i < layers.length; i++) {
+    			if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+    				labelLayerId = layers[i].id;
+    				break;
+    			}
+    		}
+    		 
+    		map.addLayer({
+    		'id': '3d-buildings',
+    		'source': 'composite',
+    		'source-layer': 'building',
+    		'filter': ['==', 'extrude', 'true'],
+    		'type': 'fill-extrusion',
+    		'minzoom': 15,
+    		'paint': {
+    		'fill-extrusion-color': '#aaa',
+    		 
+    		// use an 'interpolate' expression to add a smooth transition effect to the
+    		// buildings as the user zooms in
+    		'fill-extrusion-height': [
+    		"interpolate", ["linear"], ["zoom"],
+    		15, 0,
+    		15.05, ["get", "height"]
+    		],
+    		'fill-extrusion-base': [
+    		"interpolate", ["linear"], ["zoom"],
+    		15, 0,
+    		15.05, ["get", "min_height"]
+    		],
+    		'fill-extrusion-opacity': .6
+    		}
+    		}, labelLayerId);
+    		});
+	        var marker = new mapboxgl.Marker()
+	          .setLngLat([position.coords.longitude, position.coords.latitude])
+	          .addTo(map);
+	      	}
+	      	);
+    	</script>
   </body>
 </html>
